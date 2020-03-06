@@ -1,1 +1,1 @@
-{"endpoint": "http://api.local.alerta.io:8080/api"}
+{"endpoint": "/api", "base_path": "/"}

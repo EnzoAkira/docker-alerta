@@ -7,6 +7,7 @@ plugins/hipchat master
 plugins/influxdb master
 plugins/logstash master
 plugins/mattermost master
+plugins/messagebird master
 plugins/msteams master
 plugins/normalise master
 plugins/op5 master

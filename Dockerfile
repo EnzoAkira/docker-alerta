@@ -8,8 +8,8 @@ ARG VCS_REF
 ARG VERSION
 
 ARG SERVER_VERSION=${VERSION}
-ARG CLIENT_VERSION=7.4.0
-ARG WEBUI_VERSION=${VERSION}
+ARG CLIENT_VERSION=7.4.4
+ARG WEBUI_VERSION=7.4.5
 
 LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.url="https://alerta.io" \
@@ -35,6 +35,7 @@ RUN curl -fsSL https://www.mongodb.org/static/pgp/server-4.2.asc | apt-key add -
     python3-dev \
     supervisor \
     wget \
+    vim \
     mongodb-org-shell && \
     apt-get -y clean && \
     apt-get -y autoremove && \
@@ -52,7 +53,7 @@ COPY install-plugins.sh /app/install-plugins.sh
 COPY plugins.txt /app/plugins.txt
 RUN /app/install-plugins.sh
 
-ADD https://github.com/alerta/alerta-webui/releases/download/v${WEBUI_VERSION}/alerta-webui.tar.gz /tmp/webui.tar.gz
+ADD https://github.com/EnzoAkira/alerta-webui/releases/download/v${WEBUI_VERSION}/alerta-webui.tar.gz /tmp/webui.tar.gz
 RUN tar zxvf /tmp/webui.tar.gz -C /tmp && \
     mv /tmp/dist /web
 COPY config.json.template /web/config.json.template

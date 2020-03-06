@@ -8,6 +8,8 @@ RUN_ONCE=/app/.run_once
 
 if [ ! -f "${RUN_ONCE}" ]; then
   touch ${RUN_ONCE}
+  
+  chmod 0755 /app/*
 
   # Fix web server config
   sed -i 's@!BASE_PATH!@'"${BASE_PATH}"'@' /app/uwsgi.ini
